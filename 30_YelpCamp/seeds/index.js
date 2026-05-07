@@ -24,9 +24,14 @@ const seedDB = async () => {
             author: '69f58dc96602d36a000a1c63',
             location: `${cities[randomCityIndex].prefecture}${cities[randomCityIndex].city}`,
             title: `${sample(descriptors)}・${sample(places)}`,
-            image: `https://picsum.photos/400?random=${Math.random()}`,
             description: '木曾路はすべて山の中である。',
-            price
+            price,
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/diuiwcvxm/image/upload/v1778121941/YelpCamp/ffcxcdotgovhhp1ohj4k.png',
+                    filename: 'YelpCamp/ffcxcdotgovhhp1ohj4k'
+                }
+            ]
         });
         await camp.save();
     }
