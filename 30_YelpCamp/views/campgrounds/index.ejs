@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') %>
+<div id="cluster-map" style="width: 100%; height: 500px"></div>
 <h1>キャンプ場一覧</h1>
 <div>
     <a href="/campgrounds/new">新規登録</a>
@@ -8,7 +9,11 @@
     <div class="card mb-3">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-fluid" src="<%= campground.images[0].url %>" alt="">
+                <% if (campground.images && campground.images.length) { %>
+                    <img class="img-fluid" src="<%= campground.images[0].url %>" alt="">
+                <% } else { %>
+                    <img class="img-fluid" src="https://res.cloudinary.com/diuiwcvxm/image/upload/v1778121941/YelpCamp/ffcxcdotgovhhp1ohj4k.png" alt="">
+                <% } %>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -23,3 +28,19 @@
         </div>
     </div>
 <% } %>
+
+<script>
+    const maptilerApiKey = "<%- process.env.MAPTILER_API_KEY %>";
+    const campgrounds = {
+      type: "FeatureCollection",
+      features: <%- JSON.stringify(
+        campgrounds.map(campground => ({
+          type: "Feature",
+          geometry: campground.geometry,
+          properties: { popupMarkup: campground?.properties?.popupMarkup }
+        }))
+      ) %>
+    };
+</script>
+    
+<script src="/javascripts/clusterMap.js"></script>

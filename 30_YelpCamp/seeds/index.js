@@ -25,6 +25,13 @@ const seedDB = async () => {
             location: `${cities[randomCityIndex].prefecture}${cities[randomCityIndex].city}`,
             title: `${sample(descriptors)}・${sample(places)}`,
             description: '木曾路はすべて山の中である。',
+            geometry: {
+                type: 'Point',
+                coordinates: [
+                    cities[randomCityIndex].longitude,
+                    cities[randomCityIndex].latitude
+                ]
+            },
             price,
             images: [
                 {
