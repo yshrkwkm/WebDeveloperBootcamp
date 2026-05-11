@@ -8,6 +8,8 @@ const map = new maptilersdk.Map({
     zoom: 3,
 });
 
+map.addControl(new mapboxgl.NavigatorControl());
+
 map.on('load', function () {
   console.log('campgrounds', campgrounds)
     map.addSource('campgrounds', {
