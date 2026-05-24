@@ -10,6 +10,11 @@ import Slots from './Slots';
 import ShoppingList from './ShoppingList';
 import Clicker from './Clicker';
 import Form from './Form';
+import Counter from './Counter';
+import Toggler from './Toggler';
+import TogglerCounter from './TogglerCounter';
+import ColorBox from './ColorBox';
+import ColorBoxGrid from './ColorBoxGrid';
 
 const data = [
   {id: 1, item: '卵', quantity: 12, completed: false},
@@ -18,11 +23,33 @@ const data = [
   {id: 4, item: 'にんじん', quantity: 6, completed: true},
 ];
 
+const colors = [
+  '#E91E63',
+  '#9C27B0',
+  '#673AB7',
+  '#3F51B5',
+  '#2196F3',
+  '#03A9F4',
+  '#00BCD4',
+  '#009688',
+  '#4CAF50',
+  '#8BC34A',
+  '#CDDC39',
+  '#FFEB3B',
+  '#FFC107',
+  '#FF9800',
+  '#FF5722',
+];
+
 function App() {
   return (
     <div>
+      <ColorBoxGrid colors={colors}/>
+      {/* <ColorBox colors={colors}/> */}
+      {/* <TogglerCounter /> */}
+      {/* <Counter /> */}
       {/* <Clicler message='やっほー' buttonText='クリックしてください' /> */}
-      <Clicker message='クリックしないでよ！' buttonText='クリックしないで！！' />
+      {/* <Clicker message='クリックしないでよ！' buttonText='クリックしないで！！' /> */}
       {/* <ShoppingList items={data} /> */}
       {/* <Slots val1='🍒' val2='🍒' val3='🍒' />
       <Slots val1='🍒' val2='🍌' val3='🍒' />
