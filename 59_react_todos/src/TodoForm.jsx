@@ -1,0 +1,44 @@
+import ListItem from '@mui/material/ListItem';
+import TextField from '@mui/material/TextField';
+import { InputAdornment, IconButton  } from '@mui/material';
+import { useState } from 'react';
+import { Create } from '@mui/icons-material';
+
+export default function TodoForm({addTodo}) {
+    const [text, setText] = useState('');
+
+    const handleChange = (evt) => {
+        setText(evt.target.value);
+    }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        addTodo(text);
+        setText('');
+    }
+
+    return (
+        <ListItem>
+            <form onSubmit={handleSubmit}>
+                <TextField 
+                    id="outlined-basic" 
+                    label="新規追加" 
+                    variant="outlined" 
+                    value={text} 
+                    onChange={handleChange}
+                    slotProps={{
+                        input: {
+                            endAdornment: (
+                                <InputAdornment position="start">
+                                    <IconButton aria-label='create todo' edge="end" type='submit'>
+                                        <Create />
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        },
+                    }}
+                />
+            </form>
+        </ListItem>
+    );
+}
